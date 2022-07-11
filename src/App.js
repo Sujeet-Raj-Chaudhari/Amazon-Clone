@@ -4,6 +4,7 @@ import Header from "./Components/Header";
 import Home from "./Components/Home";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Checkout from "./Components/Checkout";
+import Login from "./Components/Login";
 
 function App() {
   return (
@@ -11,20 +12,20 @@ function App() {
 
     <Router>
       <div className="App">
-        <Header />
         <Routes>
           <Route
             path="/login"
             element={
-              <div>
-                <h1>login</h1>
-              </div>
+              <>
+                <Login />
+              </>
             }
           ></Route>
           <Route
             path="/checkout"
             element={
               <div>
+                <Header />
                 <Checkout />
               </div>
             }
@@ -33,6 +34,7 @@ function App() {
             path="/"
             element={
               <div>
+                <Header />
                 <Home />
               </div>
             }
