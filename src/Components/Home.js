@@ -29,13 +29,37 @@ function Home() {
         </div>
 
         <div className="home_row">
-          <Product />
-          <Product />
-          <Product />
+          <Product
+            id="80276289"
+            title="boAt Airdopes 141 42H Playtime"
+            price={1399}
+            rating={4}
+            image="https://images-eu.ssl-images-amazon.com/images/I/31GUbeFG3FL._AC_SR400,600_.jpg"
+          />
+          <Product
+            id="8327141"
+            title="Apple iPhone 13(128GB)"
+            price={72990}
+            rating={5}
+            image="https://images-eu.ssl-images-amazon.com/images/I/31tyUh1todL._AC_SR400,600_.jpg"
+          />
+          <Product
+            id="2575171"
+            title="Sparx Men's Sx0241g Running Shoes"
+            price={1444}
+            rating={5}
+            image="https://m.media-amazon.com/images/I/81paxG9XinL._UX695_.jpg"
+          />
         </div>
 
         <div className="home_row">
-          <Product />
+          <Product
+            id="7671716"
+            title="Curved TV"
+            price={118000}
+            rating={4}
+            image="https://m.media-amazon.com/images/I/51+iB9+5HKL._SL1000_.jpg"
+          />
         </div>
       </div>
     </div>
