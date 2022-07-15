@@ -4,21 +4,17 @@ import "../CSS/Payment.css";
 import CheckoutProduct from "./CheckoutProduct.js";
 import axios from "./Axios.js";
 import { Link, useNavigate } from "react-router-dom";
-import {
-  stripe,
-  CardElement,
-  useElements,
-  useStripe,
-} from "@stripe/react-stripe-js";
+import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import CurrencyFormat from "react-currency-format";
 import { getBasketTotal } from "../ContextAPI/reducer";
 import { useEffect } from "react";
+import { db } from "../firebase";
 
 function Payment() {
   const [{ basket, user }, dispatch] = useStateValue();
   const history = useNavigate();
 
-  const strip = useStripe();
+  const stripe = useStripe();
   const elements = useElements();
 
   const [succeeded, setSucceeded] = useState(false);
@@ -55,10 +51,22 @@ function Payment() {
         },
       })
       .then(({ paymentIntent }) => {
+        //paymentIntent = payment confirmation
+
+        db.collection("users")
+          .doc(user?.uid)
+          .collection("orders")
+          .doc(paymentIntent.id)
+          .set({
+            basket: basket,
+            amount: paymentIntent.amount,
+            created: paymentIntent.created,
+          });
+
         setSucceeded(true);
         setError(null);
         setProcessing(false);
-        history.replace("/orders");
+        history("/orders", { replace: true });
       });
   };
 
@@ -118,7 +126,7 @@ function Payment() {
                   value={getBasketTotal(basket)}
                   displayType={"text"}
                   thousandSeprator={true}
-                  prefix={"$"}
+                  prefix={"₹"}
                 />
                 <button disabled={processing || disabled || succeeded}>
                   <span>{processing ? <p>Processing...</p> : "Buy Now"}</span>

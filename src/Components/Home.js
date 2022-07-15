@@ -15,14 +15,14 @@ function Home() {
           <Product
             id="12321341"
             title="The lean_startup"
-            price={29.99}
+            price={521}
             image="https://images-na.ssl-images-amazon.com/images/I/51Zymoq7UnL._AC_SY400_.jpg"
             rating={5}
           />
           <Product
             id="49538094"
             title="Kenwood KMX750RD/ KMix Stand Mixer 1000W (Red)"
-            price={239.0}
+            price={39149}
             rating={4}
             image="https://m.media-amazon.com/images/I/716kTJI4jtL._SX355_.jpg"
           />
