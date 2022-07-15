@@ -23,8 +23,6 @@ function App() {
     //will only run once when thge component loads...
 
     auth.onAuthStateChanged((authUser) => {
-      console.log("THE user is >>> ", authUser);
-
       if (authUser) {
         //the user just logged uin / the user was logged in
 
